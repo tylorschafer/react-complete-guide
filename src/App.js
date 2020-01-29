@@ -12,20 +12,28 @@ class App extends Component {
     showPersons: false
   }
 
-  deletePersonhandler = (personIndex) => {
+  deletePersonHandler = (personIndex) => {
     // using spread and destructuring to copy old array so we don't overwrite state
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons})
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({ persons: [
-      { name: 'Tylor', age: 29 },
-      { name: event.target.value, age: 8 },
-      { name: 'Sara', age:27 }
-    ]
-    })
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState({ persons: persons })
   }
 
   togglePersonsHandler = () => {
@@ -50,9 +58,10 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return <Person
               key = {person.id}
-              click={() => this.deletePersonhandler(index)}
+              click={() => this.deletePersonHandler(index)}
               name={person.name} 
-              age={person.age} />
+              age={person.age}
+              changed= {(event) => this.nameChangedHandler(event, person.id)}/>
           })}
         </div>
       );
