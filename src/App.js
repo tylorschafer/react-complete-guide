@@ -13,7 +13,8 @@ class App extends Component {
   }
 
   deletePersonhandler = (personIndex) => {
-    const persons = this.state.persons;
+    // using spread and destructuring to copy old array so we don't overwrite state
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons})
   }
