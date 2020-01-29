@@ -49,7 +49,8 @@ class App extends Component {
         <button 
           style={style}
           onClick={this.togglePersonsHandler}>Show / Hide</button>
-        { this.state.showPersons ?
+        { 
+          this.state.showPersons ?
             <div>
               <Person 
                 name={this.state.persons[0].name} 
