@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -17,7 +16,7 @@ class App extends Component {
     // using spread and destructuring to copy old array so we don't overwrite state
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
-    this.setState({persons: persons})
+    this.setState({persons: persons});
   }
 
   nameChangedHandler = (event, id) => {
@@ -87,19 +86,17 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Hi, I'm a React App</h1>
-          <p className={classes.join(' ')}> This is Super Cool!</p>
-          <button 
-            style={style}
-            onClick={this.togglePersonsHandler}>Show / Hide
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p className={classes.join(' ')}> This is Super Cool!</p>
+        <button 
+          style={style}
+          onClick={this.togglePersonsHandler}>Show / Hide
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+export default App;
