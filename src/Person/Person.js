@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledDiv = styled.div`
   width: 60%;
@@ -12,14 +12,14 @@ const StyledDiv = styled.div`
   @media (min-width: 500px) {
         width: '450px';
   }
-`;
+`
 
 const person = (props) => {
   const style = {
     '@media(min-width: 500px)': {
       width: '450px'
     }
-  };
+  }
   return (
     <StyledDiv>
       <p onClick={props.click}>My name is {props.name}, and I am {props.age} years old!</p>
@@ -27,6 +27,6 @@ const person = (props) => {
       <input type='text' onChange={props.changed} value={props.name} />
     </StyledDiv>
   )
-};
+}
 
 export default person
